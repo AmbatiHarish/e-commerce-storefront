@@ -1,14 +1,23 @@
 .HomeContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* Ensures the content covers the full viewport height */
+    background-color: var(--background-color);
+    /* Applies the background color */
+    padding: var(--padding-large);
+    margin: 0;
+    /* Remove any default margin */
     text-align: center;
-    padding: 40px 20px;
 }
 
 .HomeContainer h1 {
-    font-size: 36px;
-    color: #4CAF50;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: var(--padding-medium);
 }
 
 .HomeContainer p {
-    font-size: 18px;
-    color: #555;
+    font-size: var(--font-size-medium);
+    color: var(--text-color-secondary);
 }

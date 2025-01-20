@@ -1,38 +1,39 @@
 .ProductItemContainer {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
+    background-color: var(--card-background-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--padding-medium);
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px var(--box-shadow-light);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .ProductItemContainer:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px var(--box-shadow-medium);
 }
 
 .ProductItemContainer h2 {
-    font-size: 20px;
-    margin: 0 0 10px;
+    font-size: var(--font-size-medium);
+    margin: 0 0 8px;
+    color: var(--text-color-primary);
 }
 
 .ProductItemContainer p {
-    font-size: 16px;
-    color: #555;
+    font-size: var(--font-size-small);
+    color: var(--text-color-secondary);
 }
 
 .ProductItemContainer button {
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--accent-color);
+    color: var(--card-background-color);
     border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
+    padding: var(--padding-small) var(--padding-medium);
+    border-radius: var(--border-radius);
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .ProductItemContainer button:hover {
-    background-color: #45a049;
+    background-color: var(--accent-hover-color);
 }

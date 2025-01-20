@@ -1,74 +1,142 @@
 .CartContainer {
     max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    margin: 40px auto;
+    /* Centers the cart on the page */
+    padding: 24px;
+    /* Adds internal spacing */
+    background-color: var(--background-color);
+    /* White card background */
+    border-radius: var(--border-radius);
+    /* Rounded corners */
+    box-shadow: 0 4px 12px var(--box-shadow-light);
+    /* Subtle shadow */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* Space between cart items and totals */
 }
 
 .CartTitle {
+    font-size: var(--font-size-large);
+    /* Large title font */
+    color: var(--primary-color);
+    /* Primary color for emphasis */
     text-align: center;
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 20px;
+    /* Centers the title */
+    margin-bottom: 16px;
+    font-weight: bold;
+    border-bottom: 2px solid var(--border-color);
+    /* Underline */
+    padding-bottom: 8px;
 }
 
 .EmptyCart {
+    font-size: var(--font-size-medium);
+    /* Medium font */
+    color: var(--text-color-muted);
+    /* Muted text for subtlety */
     text-align: center;
-    font-size: 1.2rem;
-    color: #777;
+    /* Centered text */
+    margin-top: 20px;
 }
 
 .CartItems {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 16px;
+    /* Space between each item */
 }
 
 .CartItem {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    /* Subtle border */
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 6px var(--box-shadow-light);
+    /* Slight shadow for depth */
+    background-color: var(--card-background-color);
+    /* Off-white background */
 }
 
 .CartItemInfo {
-    max-width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    /* Spacing between name, price, and quantity */
 }
 
 .CartItemName {
-    font-size: 1.2rem;
-    color: #333;
+    font-size: var(--font-size-medium);
+    /* Medium font for name */
+    color: var(--text-color-primary);
+    /* Primary text color */
+    font-weight: bold;
     margin: 0;
 }
 
 .CartItemPrice,
 .CartItemQuantity {
-    margin: 5px 0;
-    font-size: 1rem;
-    color: #666;
+    font-size: var(--font-size-small);
+    /* Smaller font for details */
+    color: var(--text-color-secondary);
+    /* Secondary text color */
+    margin: 0;
 }
 
 .RemoveItemButton {
-    background-color: #ff4d4d;
-    color: #fff;
+    background-color: var(--secondary-color);
+    /* Secondary color for buttons */
+    color: var(--card-background-color);
+    /* White text */
     border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
+    padding: 8px 16px;
+    /* Button padding */
+    border-radius: var(--border-radius);
+    /* Rounded corners */
     cursor: pointer;
+    font-size: var(--font-size-small);
+    /* Button text size */
     transition: background-color 0.3s ease;
 }
 
 .RemoveItemButton:hover {
-    background-color: #e60000;
+    background-color: var(--secondary-hover-color);
+    /* Darker hover color */
 }
 
 .CartTotal {
+    font-size: var(--font-size-large);
+    /* Larger font for total */
+    color: var(--primary-color);
+    /* Emphasized with primary color */
     text-align: right;
-    font-size: 1.5rem;
-    color: #333;
-    margin-top: 20px;
+    /* Align total to the right */
+    margin-top: 16px;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .CartContainer {
+        padding: 16px;
+    }
+
+    .CartItem {
+        flex-direction: column;
+        /* Stack items vertically on smaller screens */
+        align-items: flex-start;
+        /* Align items to the left */
+    }
+
+    .RemoveItemButton {
+        align-self: flex-end;
+        /* Align button to the right on small screens */
+    }
+
+    .CartTotal {
+        text-align: left;
+        /* Align total to the left for smaller screens */
+    }
 }

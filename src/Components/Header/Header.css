@@ -1,42 +1,42 @@
 .HeaderContainer {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: var(--card-background-color);
+    padding: var(--padding-medium);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px var(--box-shadow-light);
 }
 
 .HeaderContainer h1 {
-    font-size: 24px;
+    font-size: var(--font-size-large);
     margin: 0;
 }
 
 .HeaderContainer nav {
     display: flex;
-    gap: 15px;
+    gap: var(--padding-small);
 }
 
 .HeaderLink {
     text-decoration: none;
-    color: white;
-    font-size: 16px;
-    padding: 5px 10px;
-    border-radius: 4px;
+    color: var(--card-background-color);
+    font-size: var(--font-size-medium);
+    padding: var(--padding-small);
+    border-radius: var(--border-radius);
     transition: background-color 0.3s;
 }
 
 .HeaderLink:hover {
-    background-color: #45a049;
+    background-color: var(--primary-hover-color);
 }
 
 .CartCount {
-    background-color: #ff4d4d;
-    color: white;
-    font-size: 0.9rem;
+    background-color: var(--secondary-color);
+    color: var(--card-background-color);
+    font-size: var(--font-size-small);
     font-weight: bold;
     border-radius: 50%;
-    padding: 3px 8px;
-    margin-left: 5px;
+    padding: 4px 8px;
+    margin-left: 8px;
 }

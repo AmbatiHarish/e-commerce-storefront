@@ -11,3 +11,40 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root {
+  --primary-color: #6c757d;
+  /* Muted Slate Gray */
+  --primary-hover-color: #495057;
+  /* Darker Slate Gray */
+  --secondary-color: #ffb703;
+  /* Soft Golden Yellow */
+  --secondary-hover-color: #faa307;
+  /* Rich Amber */
+  --accent-color: #90be6d;
+  /* Muted Olive Green */
+  --accent-hover-color: #6a994e;
+  /* Deeper Olive Green */
+  --background-color: #f4f1de;
+  /* Off-White Background */
+  --card-background-color: #ffffff;
+  /* White Card Background */
+  --border-color: #e9ecef;
+  /* Very Light Gray Border */
+  --box-shadow-light: rgba(0, 0, 0, 0.03);
+  --box-shadow-medium: rgba(0, 0, 0, 0.1);
+  --text-color-primary: #343a40;
+  /* Deep Charcoal */
+  --text-color-secondary: #495057;
+  /* Subtle Slate Gray */
+  --text-color-muted: #868e96;
+  /* Muted Gray */
+  --font-size-large: 2rem;
+  --font-size-medium: 1.2rem;
+  --font-size-small: 1rem;
+  --border-radius: 12px;
+  /* Softer Rounded Corners */
+  --padding-small: 8px;
+  --padding-medium: 16px;
+  --padding-large: 24px;
+}
