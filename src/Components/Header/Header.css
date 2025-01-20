@@ -30,3 +30,13 @@
 .HeaderLink:hover {
     background-color: #45a049;
 }
+
+.CartCount {
+    background-color: #ff4d4d;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 3px 8px;
+    margin-left: 5px;
+}

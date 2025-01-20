@@ -1,10 +1,13 @@
 import React from 'react';
 import './ProductItem.css';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../../features/cart/cartSlice';
 
 const ProductItem = ({ product }) => {
+    const dispatch = useDispatch();
 
     const addToCartHandler = () => {
-
+        dispatch(addItem(product));
     };
 
     return (
