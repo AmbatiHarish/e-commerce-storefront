@@ -64,6 +64,7 @@
 .CartItemInfo {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 4px;
     /* Spacing between name, price, and quantity */
 }

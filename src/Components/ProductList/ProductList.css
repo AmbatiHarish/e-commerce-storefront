@@ -1,7 +1,21 @@
 .ProductListContainer {
     display: grid;
-    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
     gap: var(--padding-medium);
-    padding: var(--padding-medium);
     background-color: var(--background-color);
+}
+
+/* Media query for smaller screens */
+@media (max-width: 900px) {
+    .ProductListContainer {
+        grid-template-columns: repeat(3, 1fr);
+        /* Single column for mobile */
+    }
+}
+
+@media (max-width: 768px) {
+    .ProductListContainer {
+        grid-template-columns: repeat(2, 1fr);
+        /* Single column for mobile */
+    }
 }

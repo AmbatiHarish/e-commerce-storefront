@@ -40,3 +40,16 @@
     padding: 4px 8px;
     margin-left: 8px;
 }
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .HeaderContainer {
+        flex-direction: column;
+        /* Stack content vertically */
+        align-items: center;
+    }
+
+    .HeaderContainer nav {
+        justify-content: center;
+    }
+}
