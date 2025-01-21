@@ -101,7 +101,9 @@ const ProductList = () => {
                     Add Product
                 </button>
             </div>
-            <DataTable data={products} columns={columns} actions={actions} />
+            {products && (
+                <DataTable data={products} columns={columns} actions={actions} />
+            )}
             {isAddModalOpen && (
                 <ProductFormModal
                     open={isAddModalOpen}
@@ -124,7 +126,7 @@ const ProductList = () => {
                 <p>Browse our collection of the best products available.</p>
                 <div className='ProductItemList'>
                     {
-                        products.map(product => (
+                        products?.map(product => (
                             <ProductItem key={product?.id} product={product} />
                         ))
                     }

@@ -44,9 +44,10 @@ const ProductFormModal = ({ open, onClose, onSubmit, initialData = {}, formTitle
 
     return (
         <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
-            <DialogTitle>{formTitle}</DialogTitle>
+            <DialogTitle data-testid={formTitle}>{formTitle}</DialogTitle>
             <DialogContent>
                 <TextField
+                    data-testid="product-name"
                     label="Product Name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -55,6 +56,7 @@ const ProductFormModal = ({ open, onClose, onSubmit, initialData = {}, formTitle
                     required
                 />
                 <TextField
+                    data-testid="product-description"
                     label="Description"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
@@ -65,6 +67,7 @@ const ProductFormModal = ({ open, onClose, onSubmit, initialData = {}, formTitle
                     required
                 />
                 <TextField
+                    data-testid="product-price"
                     label="Price ($)"
                     type="number"
                     value={price}
@@ -74,6 +77,7 @@ const ProductFormModal = ({ open, onClose, onSubmit, initialData = {}, formTitle
                     required
                 />
                 <TextField
+                    data-testid="product-quantity"
                     label="Quantity"
                     type="number"
                     value={quantity}

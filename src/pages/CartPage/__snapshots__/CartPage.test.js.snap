@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartPage Component matches the snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      data-testid="cart-component"
+    >
+      Cart Component
+    </div>
+  </div>
+</DocumentFragment>
+`;
