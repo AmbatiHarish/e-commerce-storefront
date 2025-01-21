@@ -25,7 +25,6 @@ const Header = () => {
             <h1>E-Commerce Store</h1>
             <nav>
                 <Link to="/" className="HeaderLink">Home</Link>
-                <Link to="/add-product" className='HeaderLink'>Add Product</Link>
                 <Link to="/cart" className="HeaderLink"><IconButton aria-label="cart">
                     <StyledBadge badgeContent={totalItems} color="secondary">
                         <ShoppingCartIcon />

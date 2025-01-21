@@ -1,20 +1,61 @@
-.ProductListContainer {
+.ProductItemList {
     display: grid;
     grid-template-columns: repeat(4, minmax(200px, 1fr));
     gap: var(--padding-medium);
     background-color: var(--background-color);
 }
 
+.ProductItemContainer h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: var(--padding-medium);
+}
+
+.ProductItemContainer p {
+    font-size: var(--font-size-medium);
+    color: var(--text-color-secondary);
+}
+
+.ProductListHeader {
+    display: flex;
+    justify-content: space-between;
+    /* Align heading and button on opposite sides */
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.ProductListHeading {
+    font-size: var(--font-size-large);
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.add-button {
+    padding: 10px 20px;
+    font-size: var(--font-size-medium);
+    font-weight: bold;
+    color: var(--card-background-color);
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-button:hover {
+    background-color: var(--accent-hover-color);
+}
+
 /* Media query for smaller screens */
 @media (max-width: 900px) {
-    .ProductListContainer {
+    .ProductItemList {
         grid-template-columns: repeat(3, 1fr);
         /* Single column for mobile */
     }
 }
 
 @media (max-width: 768px) {
-    .ProductListContainer {
+    .ProductItemList {
         grid-template-columns: repeat(2, 1fr);
         /* Single column for mobile */
     }

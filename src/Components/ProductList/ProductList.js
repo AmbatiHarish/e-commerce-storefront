@@ -1,10 +1,16 @@
+import { Alert, Snackbar } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import { addProduct, deleteProduct, fetchProducts, updateProduct } from '../../api';
+import DataTable from '../DataTable/DataTable';
+import ProductFormModal from '../ProductFormModal/ProductFormModal';
 import ProductItem from '../ProductItem/ProductItem';
 import './ProductList.css';
-import { fetchProducts } from '../../api';
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+    const [editingProduct, setEditingProduct] = useState(null);
+    const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
 
     useEffect(() => {
         const getProducts = async () => {
@@ -12,18 +18,142 @@ const ProductList = () => {
                 const data = await fetchProducts();
                 setProducts(data);
             } catch (error) {
+                handleSnackbar('Error fetching products', 'error');
                 console.error('Error fetching products:', error);
             }
         };
 
         getProducts();
     }, []);
+
+    const handleSnackbar = (message, severity = 'success') => {
+        setSnackbar({ open: true, message, severity });
+    };
+
+    const handleCloseSnackbar = () => {
+        setSnackbar({ open: false, message: '', severity: 'success' });
+    };
+
+    const handleDelete = async (id) => {
+        try {
+            await deleteProduct(id);
+            handleSnackbar('Product deleted successfully!');
+            setProducts(products.filter((product) => product.id !== id));
+        } catch (error) {
+            handleSnackbar('Error fetching products', 'error');
+            console.error('Error deleting product:', error);
+        }
+    };
+
+    const handleEdit = (product) => {
+        setEditingProduct(product);
+    };
+
+    const handleAddProduct = () => {
+        setIsAddModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsAddModalOpen(false);
+        setEditingProduct(null);
+    };
+
+    const handleAddProductModal = async (newProduct) => {
+        try {
+            await addProduct(newProduct);
+            handleSnackbar('Product added successfully!');
+            handleCloseModal(); // Close the modal
+        } catch (error) {
+            handleSnackbar('Error fetching products', 'error');
+            console.error('Error adding product:', error);
+        }
+    };
+
+    const handleEditProductModal = async (updatedProduct) => {
+        try {
+            await updateProduct(updatedProduct.id, updatedProduct);
+            handleSnackbar('Product updated successfully!');
+            handleCloseModal(); // Close the modal
+        } catch (error) {
+            handleSnackbar('Error fetching products', 'error');
+            console.error('Error updating product:', error);
+        }
+    }
+
+    const columns = [
+        { key: 'id', label: 'ID' },
+        { key: 'name', label: 'Name' },
+        { key: 'description', label: 'Description' },
+        { key: 'price', label: 'Price' },
+        { key: 'quantity', label: 'Quantity' },
+    ];
+
+    const actions = [
+        {
+            label: 'Edit',
+            className: 'edit-button',
+            onClick: (row) => handleEdit(row),
+        },
+        {
+            label: 'Delete',
+            className: 'delete-button',
+            onClick: (row) => handleDelete(row.id),
+        },
+    ];
+
     return (
-        <div className='ProductListContainer'>
-            {products.map(product => (
-                <ProductItem key={product.id} product={product} />
-            ))}
-        </div>
+        <div>
+            <div className="ProductListHeader">
+                <h1 className="ProductListHeading">Product List</h1>
+                <button onClick={handleAddProduct} className="add-button">
+                    Add Product
+                </button>
+            </div>
+            <DataTable data={products} columns={columns} actions={actions} />
+            {isAddModalOpen && (
+                <ProductFormModal
+                    open={isAddModalOpen}
+                    onClose={handleCloseModal}
+                    onSubmit={handleAddProductModal}
+                    formTitle="Add Product"
+                />
+            )}
+            {editingProduct && (
+                <ProductFormModal
+                    open={!!editingProduct}
+                    onClose={handleCloseModal}
+                    onSubmit={handleEditProductModal}
+                    initialData={editingProduct}
+                    formTitle="Edit Product"
+                />
+            )}
+            <div>
+                <h1>Welcome to Our Store</h1>
+                <p>Browse our collection of the best products available.</p>
+                <div className='ProductItemList'>
+                    {
+                        products.map(product => (
+                            <ProductItem key={product.id} product={product} />
+                        ))
+                    }
+                </div>
+            </div>
+
+            <Snackbar
+                open={snackbar.open}
+                autoHideDuration={3000}
+                onClose={handleCloseSnackbar}
+                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+            >
+                <Alert
+                    onClose={handleCloseSnackbar}
+                    severity={snackbar.severity}
+                    sx={{ width: '100%' }}
+                >
+                    {snackbar.message}
+                </Alert>
+            </Snackbar>
+        </div >
     );
 };
 

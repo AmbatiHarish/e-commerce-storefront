@@ -10,14 +10,3 @@
     /* Remove any default margin */
     text-align: center;
 }
-
-.HomeContainer h1 {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: var(--padding-medium);
-}
-
-.HomeContainer p {
-    font-size: var(--font-size-medium);
-    color: var(--text-color-secondary);
-}

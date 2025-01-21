@@ -1,0 +1,58 @@
+.DataTableContainer {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--card-background-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px var(--box-shadow-light);
+}
+
+.DataTable {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: var(--font-size-small);
+}
+
+.DataTable th,
+.DataTable td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.DataTable th {
+    background-color: var(--primary-color);
+    color: var(--card-background-color);
+}
+
+.DataTable tr:hover {
+    background-color: var(--background-color);
+}
+
+button {
+    margin-right: 5px;
+    padding: 8px 12px;
+    font-size: var(--font-size-small);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.edit-button {
+    background-color: var(--primary-color);
+    color: var(--card-background-color);
+}
+
+button.edit-button:hover {
+    background-color: var(--primary-hover-color);
+}
+
+button.delete-button {
+    background-color: var(--secondary-color);
+    color: var(--card-background-color);
+}
+
+button.delete-button:hover {
+    background-color: var(--secondary-hover-color);
+}
