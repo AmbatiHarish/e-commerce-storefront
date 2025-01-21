@@ -16,6 +16,7 @@
 .HeaderContainer nav {
     display: flex;
     gap: var(--padding-small);
+    align-items: center;
 }
 
 .HeaderLink {
