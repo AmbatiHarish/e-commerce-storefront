@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField';
 import React, { useEffect, useState } from 'react';
 import { useSnackbar } from '../../context/SnackbarContext';
 
-const ProductFormModal = ({ open, onClose, onSubmit, initialData = {}, formTitle }) => {
+const ProductFormModal = ({ open, onClose, onSubmit, initialData, formTitle }) => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
@@ -28,7 +28,7 @@ const ProductFormModal = ({ open, onClose, onSubmit, initialData = {}, formTitle
         e.preventDefault();
         // Validate form fields
         if (!name || !description || !price || !quantity) {
-            showSnackbar("All fields are required.");
+            showSnackbar("All fields are required.", "error");
             return; // Do not proceed if validation fails
         }
         const productData = {
@@ -46,46 +46,48 @@ const ProductFormModal = ({ open, onClose, onSubmit, initialData = {}, formTitle
         <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
             <DialogTitle data-testid={formTitle}>{formTitle}</DialogTitle>
             <DialogContent>
-                <TextField
-                    data-testid="product-name"
-                    label="Product Name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    fullWidth
-                    margin="normal"
-                    required
-                />
-                <TextField
-                    data-testid="product-description"
-                    label="Description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    fullWidth
-                    margin="normal"
-                    multiline
-                    rows={4}
-                    required
-                />
-                <TextField
-                    data-testid="product-price"
-                    label="Price ($)"
-                    type="number"
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
-                    fullWidth
-                    margin="normal"
-                    required
-                />
-                <TextField
-                    data-testid="product-quantity"
-                    label="Quantity"
-                    type="number"
-                    value={quantity}
-                    onChange={(e) => setQuantity(e.target.value)}
-                    fullWidth
-                    margin="normal"
-                    required
-                />
+                <form>
+                    <TextField
+                        data-testid="product-name"
+                        label="Product Name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        fullWidth
+                        margin="normal"
+                        required
+                    />
+                    <TextField
+                        data-testid="product-description"
+                        label="Description"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        fullWidth
+                        margin="normal"
+                        multiline
+                        rows={4}
+                        required
+                    />
+                    <TextField
+                        data-testid="product-price"
+                        label="Price ($)"
+                        type="number"
+                        value={price}
+                        onChange={(e) => setPrice(e.target.value)}
+                        fullWidth
+                        margin="normal"
+                        required
+                    />
+                    <TextField
+                        data-testid="product-quantity"
+                        label="Quantity"
+                        type="number"
+                        value={quantity}
+                        onChange={(e) => setQuantity(e.target.value)}
+                        fullWidth
+                        margin="normal"
+                        required
+                    />
+                </form>
             </DialogContent>
             <DialogActions>
                 <Button onClick={onClose} color="secondary" variant="outlined">

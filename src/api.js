@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://ecommerce-store-285b2b3cf967.herokuapp.com/api';
+const API_BASE_URL = 'https://infinite-crag-97104-fbd5d845929b.herokuapp.com//api';
 
 // Product API methods
 export const fetchProducts = async () => {

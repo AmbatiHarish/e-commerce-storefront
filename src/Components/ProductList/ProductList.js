@@ -55,6 +55,7 @@ const ProductList = () => {
             await addProduct(newProduct);
             showSnackbar('Product added successfully!');
             handleCloseModal(); // Close the modal
+            setProducts([...products, newProduct]); // Update the product list
         } catch (error) {
             showSnackbar('Error fetching products', 'error');
             console.error('Error adding product:', error);
@@ -66,6 +67,7 @@ const ProductList = () => {
             await updateProduct(updatedProduct.id, updatedProduct);
             showSnackbar('Product updated successfully!');
             handleCloseModal(); // Close the modal
+            setProducts(products.map((product) => (product.id === updatedProduct.id ? updatedProduct : product))); // Update the product list
         } catch (error) {
             showSnackbar('Error fetching products', 'error');
             console.error('Error updating product:', error);
