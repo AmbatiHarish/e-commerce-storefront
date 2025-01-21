@@ -1,6 +1,6 @@
-import { Alert, Snackbar } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { addProduct, deleteProduct, fetchProducts, updateProduct } from '../../api';
+import { useSnackbar } from '../../context/SnackbarContext';
 import DataTable from '../DataTable/DataTable';
 import ProductFormModal from '../ProductFormModal/ProductFormModal';
 import ProductItem from '../ProductItem/ProductItem';
@@ -10,7 +10,7 @@ const ProductList = () => {
     const [products, setProducts] = useState([]);
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const [editingProduct, setEditingProduct] = useState(null);
-    const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
+    const { showSnackbar } = useSnackbar();
 
     useEffect(() => {
         const getProducts = async () => {
@@ -18,29 +18,21 @@ const ProductList = () => {
                 const data = await fetchProducts();
                 setProducts(data);
             } catch (error) {
-                handleSnackbar('Error fetching products', 'error');
+                showSnackbar('Error fetching products', 'error');
                 console.error('Error fetching products:', error);
             }
         };
 
         getProducts();
-    }, []);
-
-    const handleSnackbar = (message, severity = 'success') => {
-        setSnackbar({ open: true, message, severity });
-    };
-
-    const handleCloseSnackbar = () => {
-        setSnackbar({ open: false, message: '', severity: 'success' });
-    };
+    }, [showSnackbar]);
 
     const handleDelete = async (id) => {
         try {
             await deleteProduct(id);
-            handleSnackbar('Product deleted successfully!');
+            showSnackbar('Product deleted successfully!');
             setProducts(products.filter((product) => product.id !== id));
         } catch (error) {
-            handleSnackbar('Error fetching products', 'error');
+            showSnackbar('Error fetching products', 'error');
             console.error('Error deleting product:', error);
         }
     };
@@ -61,10 +53,10 @@ const ProductList = () => {
     const handleAddProductModal = async (newProduct) => {
         try {
             await addProduct(newProduct);
-            handleSnackbar('Product added successfully!');
+            showSnackbar('Product added successfully!');
             handleCloseModal(); // Close the modal
         } catch (error) {
-            handleSnackbar('Error fetching products', 'error');
+            showSnackbar('Error fetching products', 'error');
             console.error('Error adding product:', error);
         }
     };
@@ -72,10 +64,10 @@ const ProductList = () => {
     const handleEditProductModal = async (updatedProduct) => {
         try {
             await updateProduct(updatedProduct.id, updatedProduct);
-            handleSnackbar('Product updated successfully!');
+            showSnackbar('Product updated successfully!');
             handleCloseModal(); // Close the modal
         } catch (error) {
-            handleSnackbar('Error fetching products', 'error');
+            showSnackbar('Error fetching products', 'error');
             console.error('Error updating product:', error);
         }
     }
@@ -133,26 +125,11 @@ const ProductList = () => {
                 <div className='ProductItemList'>
                     {
                         products.map(product => (
-                            <ProductItem key={product.id} product={product} />
+                            <ProductItem key={product?.id} product={product} />
                         ))
                     }
                 </div>
             </div>
-
-            <Snackbar
-                open={snackbar.open}
-                autoHideDuration={3000}
-                onClose={handleCloseSnackbar}
-                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-            >
-                <Alert
-                    onClose={handleCloseSnackbar}
-                    severity={snackbar.severity}
-                    sx={{ width: '100%' }}
-                >
-                    {snackbar.message}
-                </Alert>
-            </Snackbar>
         </div >
     );
 };

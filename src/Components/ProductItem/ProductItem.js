@@ -11,11 +11,12 @@ const ProductItem = ({ product }) => {
     };
 
     return (
-        <div className='ProductItemContainer'>
-            <h2>{product.name}</h2>
-            <p>Price: ${product.price}</p>
-            <button onClick={addToCartHandler}>Add to Cart</button>
-        </div>
+        product && (
+            <div className='ProductItemContainer'>
+                <h2>{product?.name}</h2>
+                <p>Price: ${product?.price}</p>
+                <button onClick={addToCartHandler}>Add to Cart</button>
+            </div>)
     );
 };
 

@@ -20,12 +20,14 @@ const Header = () => {
     const cartItems = useSelector(state => state.cart.items);
     const totalItems = cartItems.reduce((count, item) => count + item.quantity, 0);
 
+    console.log(totalItems);
+
     return (
         <header className="HeaderContainer">
             <h1>E-Commerce Store</h1>
             <nav>
                 <Link to="/" className="HeaderLink">Home</Link>
-                <Link to="/cart" className="HeaderLink"><IconButton aria-label="cart">
+                <Link to="/cart" className="HeaderLink" data-testid="cart-link"><IconButton aria-label="cart">
                     <StyledBadge badgeContent={totalItems} color="secondary">
                         <ShoppingCartIcon />
                     </StyledBadge>
