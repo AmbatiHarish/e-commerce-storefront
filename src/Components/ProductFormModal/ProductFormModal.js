@@ -32,7 +32,7 @@ const ProductFormModal = ({ open, onClose, onSubmit, initialData, formTitle }) =
             return; // Do not proceed if validation fails
         }
         const productData = {
-            id: initialData.id, // Include ID if editing
+            id: initialData?.id, // Include ID if editing
             name,
             description,
             price: parseFloat(price),

@@ -29,8 +29,9 @@ const ProductList = () => {
     const handleDelete = async (id) => {
         try {
             await deleteProduct(id);
+            const data = await fetchProducts();
+            setProducts(data);
             showSnackbar('Product deleted successfully!');
-            setProducts(products.filter((product) => product.id !== id));
         } catch (error) {
             showSnackbar('Error fetching products', 'error');
             console.error('Error deleting product:', error);
@@ -55,7 +56,8 @@ const ProductList = () => {
             await addProduct(newProduct);
             showSnackbar('Product added successfully!');
             handleCloseModal(); // Close the modal
-            setProducts([...products, newProduct]); // Update the product list
+            const data = await fetchProducts();
+            setProducts(data);
         } catch (error) {
             showSnackbar('Error fetching products', 'error');
             console.error('Error adding product:', error);
@@ -67,7 +69,8 @@ const ProductList = () => {
             await updateProduct(updatedProduct.id, updatedProduct);
             showSnackbar('Product updated successfully!');
             handleCloseModal(); // Close the modal
-            setProducts(products.map((product) => (product.id === updatedProduct.id ? updatedProduct : product))); // Update the product list
+            const data = await fetchProducts();
+            setProducts(data);
         } catch (error) {
             showSnackbar('Error fetching products', 'error');
             console.error('Error updating product:', error);
